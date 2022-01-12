@@ -9,7 +9,7 @@
     <ul>
         {% for i in post %}
         <li>
-            <h2>{{ i.title }}</h2>
+            <h2><a href="/book/{{ i.id }}">{{ i.title }}</a></h2>
             <p> {{ i.description }}</p>
             <img src="{{ i.image.url }}" alt="">
         </li>
