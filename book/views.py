@@ -16,7 +16,7 @@ def add_book(request):
         form = forms.BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponse('Show created')
+            return HttpResponse('You add new book!')
     else:
         form = forms.BookForm()
     return render(request, "add_book.html", {"form": form})
