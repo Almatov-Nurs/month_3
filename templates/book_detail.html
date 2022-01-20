@@ -65,13 +65,25 @@
               <h5 class="card-title">{{ book.title }}</h5>
               <p class="card-text">{{ book.description }}</p>
               <a href="/book/" class="btn btn-book">Books</a>
+              <button type="button" class="btn btn-primary"><a href="/book/{{ book.id }}/raiting/"><p class="card-text">Raiting</p></a></button>
             </div>
           </div>
         </div>
       </div>
 </div>
+<div class="card-body" style="background-color: white;">
+    <h4 class="card-title">Рейтинги людей:</h4>
+    {% for i in rate %}
+    <p>Имя: {{ i.name }}</p>
+    <p>Рейтинг: {{ i.raiting }} за книгу "{{ i.rait }}"/5</p>
+    {% endfor %}
+</div>
 <div class="container btn-skam">
     <a href="https://www.youtube.com/watch?v=OU78s3Tl0EY" class="btn skam"></a>
+</div>
+<div>
+    <button type="button" class="btn btn-primary"><a href="/book/{{ book.id }}/update/"><p class="card-text">Change</p></a></button>
+    <button type="button" class="btn btn-primary"><a href="/book/{{ book.id }}/delete/"><p class="card-text">Delete</p></a></button>
 </div>
 <div class="text txt">
     <p style="color: white;">в "book_detail.html" вы можете вырубить комментарий цвета заднего фона или оставить этот фон</p>
