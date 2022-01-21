@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from . import models, forms
-from .models import Raiting
+from .models import Book, Raiting
 
 def book_all(request):
     post = models.Book.objects.all()
@@ -13,7 +13,7 @@ def book_all(request):
 
 def book_detail(request, id):
     book = get_object_or_404(models.Book, id=id)
-    rate = Raiting.objects.filter()
+    rate = Raiting.objects.filter(rait_id=id)
     return render(request, 'book_detail.html', {'book': book,'rate':rate})
 
 def add_book(request):
@@ -44,7 +44,7 @@ def book_delete(request, id):
     book_object.delete()
     return HttpResponse('Book Deleted')
 
-def book_raiting(request, id):
+def book_raiting(request):
     method = request.method
     if method == "POST":
         form = forms.RaitingForm(request.POST, request.FILES)
