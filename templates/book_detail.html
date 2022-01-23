@@ -52,6 +52,16 @@
         margin-top: 350px;
     }
 
+    .rait {
+        max-width: 500px;
+    }
+
+    .comment {
+        max-width: 500px;
+        background-color: #00DBDE;
+        background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    }
+
 </style>
 
 <div class="card mb-3">
@@ -70,13 +80,51 @@
           </div>
         </div>
       </div>
+        <div class="card mb-3">
+            <ul>
+                {% for e in book.book_selection.all %}
+                    <h2 class="card-title">Expert name: {{e.expert_selection.surname}} {{e.expert_selection.name}}</h2>
+                    <p class="card-text">Hobby: {{ e.expert_selection.hobby }}</p>
+                    <p class="card-text">Information about {{ e.expert_selection.name }}:
+                        {{ e.expert_selection.info }}
+                    </p><br>
+                    <p class="card-text">Recommendation text: {{e.text}}</p>
+                {% endfor %}
+            </ul>
+        </div>
 </div>
-<div class="card-body" style="background-color: white;">
-    <h4 class="card-title">Рейтинги людей:</h4>
-    {% for i in rate %}
-    <p>Имя: {{ i.name }}</p>
-    <p>Рейтинг: {{ i.raiting }}/5 за книгу "{{ i.rait }}"</p>
-    {% endfor %}
+<div class="card mb-3 comment">
+    <h2>Comments: </h2>
+    <ul>
+        {% for i in book.book_comment.all %}
+        <li>
+            <p>{{ i.name }}</p>
+            <p>{{i.text_comment}}</p>
+            <p>- {{i.date_now}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="card mb-3 comment">
+    <div class="card-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add a comment">
+        </form>
+    </div>
+</div>
+<div class="card mb-3 rait">
+    <div class="card-body">
+        <h4 class="card-title">Рейтинги людей:</h4>
+        <div class="card-text">  
+            {% for i in object.raiting_book.all %}
+            <p>Имя: {{ i.name }}</p>
+            <p>Рейтинг: {{ i.raiting }}/5</p>
+            <p>_____________________________</p>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 <div class="container btn-skam">
     <a href="https://www.youtube.com/watch?v=OU78s3Tl0EY" class="btn skam"></a>

@@ -12,3 +12,8 @@ class RaitingForm(forms.ModelForm):
     class Meta:
         model = models.Raiting
         fields = "__all__"
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = models.BookComment
+        fields = "__all__"
