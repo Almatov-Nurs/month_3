@@ -61,7 +61,6 @@
         background-color: #00DBDE;
         background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
     }
-
 </style>
 
 <div class="card mb-3">
@@ -88,7 +87,7 @@
                     <p class="card-text">Information about {{ e.expert_selection.name }}:
                         {{ e.expert_selection.info }}
                     </p><br>
-                    <p class="card-text">Recommendation text: {{e.text}}</p>
+                    <p class="card-text">Recomedation text: {{ e.text}}</p>
                 {% endfor %}
             </ul>
         </div>
@@ -110,7 +109,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Add a comment">
+            <input class="form-control" type="submit" value="Add a comment">
         </form>
     </div>
 </div>
