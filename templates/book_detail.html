@@ -54,12 +54,25 @@
 
     .rait {
         max-width: 500px;
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     }
 
     .comment {
         max-width: 500px;
-        background-color: #00DBDE;
-        background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    }
+    .form-control {
+        border-radius: 16px;
+        transition: all 0.5s ease;
+
+    }
+    .form-control:hover{
+        background: #0dcaf0;
+    }
+    .form-label input, textarea, select{
+        border-radius: 16px;
+        outline: none;
+        border: none;
     }
 </style>
 
@@ -74,15 +87,17 @@
               <h5 class="card-title">{{ book.title }}</h5>
               <p class="card-text">{{ book.description }}</p>
               <a href="/book/" class="btn btn-book">Books</a>
-              <button type="button" class="btn btn-primary"><a href="/book/{{ book.id }}/raiting/"><p class="card-text">Raiting</p></a></button>
+              <button type="button" class="btn btn-primary">
+                  <a href="/book/{{ book.id }}/raiting/">
+                      <p class="card-text">Raiting</p></a></button>
             </div>
           </div>
         </div>
       </div>
         <div class="card mb-3">
-            <ul>
+            <ul>                      
                 {% for e in book.book_selection.all %}
-                    <h2 class="card-title">Expert name: {{e.expert_selection.surname}} {{e.expert_selection.name}}</h2>
+                    <h2 class="card-title">Expert name: {{ e.expert_selection.surname }} {{e.expert_selection.name}}</h2>
                     <p class="card-text">Hobby: {{ e.expert_selection.hobby }}</p>
                     <p class="card-text">Information about {{ e.expert_selection.name }}:
                         {{ e.expert_selection.info }}
@@ -99,18 +114,25 @@
         <li>
             <p>{{ i.name }}</p>
             <p>{{i.text_comment}}</p>
-            <p>- {{i.date_now}}</p>
+            <li>
+                <p>{{i.date_now}}</p>
+            </li>
+            <hr>
         </li>
         {% endfor %}
     </ul>
 </div>
 <div class="card mb-3 comment">
     <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input class="form-control" type="submit" value="Add a comment">
-        </form>
+        <div class="row gy-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-9">
+                    <label for="formFile" class="form-label">{{ form.as_p }}</label>
+                    <input class="form-control" type="submit" value="Add a comment">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <div class="card mb-3 rait">
@@ -120,7 +142,7 @@
             {% for i in book.raiting_book.all %}
             <p>Имя: {{ i.name }}</p>
             <p>Рейтинг: {{ i.raiting }}/5</p>
-            <p>_____________________________</p>
+            <hr>
             {% endfor %}
         </div>
     </div>

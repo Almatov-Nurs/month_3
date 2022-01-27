@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lenta Parsers</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}">
+</head>
+<body>
+    
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    {% for i in object_list %}
+        <div class="col-md-4">
+                <img src="https://static.hdrezka.ac/i/2022/1/26/c978450c0b84fdg61m53v.jpg" class="img-fluid rounded-start" alt="">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="/parser/list/{{ i.id }}/" class="btn btn-primary">More</a>
+        </div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
