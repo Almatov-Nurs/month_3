@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 from django.views.decorators.csrf import csrf_exempt
-from . import models, forms
 
 HOST = "https://rezka.ag/"
 URL = "https://rezka.ag/page/2"
