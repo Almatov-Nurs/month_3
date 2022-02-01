@@ -18,13 +18,24 @@ GENDER_TYPE = (
     (FEMALE, "FEMALE"),
     (OTHER, "OTHER"),
 )
+LAPTOP = 1
+PC = 2
+ANDROID = 3
+IOS = 4
+DEVICE_TYPE = (
+    (LAPTOP,'LAPTOP'),
+    (PC,'PC'),
+    (ANDROID,'ANDROID'),
+    (IOS,'IOS'),
+)
+
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    phone_number = forms.CharField()
-    age = forms.IntegerField()
     user_type = forms.ChoiceField(choices=USER_TYPE, required=True)
     gender = forms.ChoiceField(choices=GENDER_TYPE, required=True)
+    device = forms.ChoiceField(choices=DEVICE_TYPE, required=True)
+
     class Meta:
         model = models.CustomUser
         fields = (
@@ -37,6 +48,9 @@ class RegistrationForm(UserCreationForm):
             'age',
             'user_type',
             'gender',
+            'local',
+            'phone_number',
+            'device',
         )
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
