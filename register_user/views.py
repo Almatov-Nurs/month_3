@@ -1,7 +1,6 @@
 from django.forms import forms
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, ListView
 from register_user.forms import LoginForm, RegistrationForm
