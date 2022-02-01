@@ -41,6 +41,9 @@ class RegistrationForm(UserCreationForm):
         fields = (
             'username',
             'email',
+            'surname',
+            'name',
+            'patronymic',
             'password1',
             'password2',
             'first_name',
@@ -50,6 +53,7 @@ class RegistrationForm(UserCreationForm):
             'gender',
             'local',
             'phone_number',
+            'reserve_number',
             'device',
         )
     def save(self, commit=True):

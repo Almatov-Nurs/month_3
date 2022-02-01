@@ -29,10 +29,14 @@ DEVICE_TYPE = (
 )
 
 class CustomUser(User):
+    surname = models.CharField(max_length=100,help_text='Фамилия', null=True)
+    name = models.CharField(max_length=100,help_text='Имя',null=True)
+    patronymic = models.CharField(max_length=100,help_text='Отчество',null=True)
     user_type = models.IntegerField(choices=USER_TYPE, verbose_name="тип пользователя", default=CLIENT)
     phone_number = models.CharField(max_length=100)
     age = models.IntegerField()
     gender = models.IntegerField(choices=GENDER_TYPE)
     local = models.CharField(max_length=255, null=True, help_text='Your adress!')
     device = models.IntegerField(choices=DEVICE_TYPE, verbose_name='Your device',null=True)
+    reserve_number = models.CharField(max_length=100, null=True)
 
