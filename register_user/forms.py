@@ -48,10 +48,13 @@ class RegistrationForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     def __init__(self,*args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
-
-    user_name = UsernameField(widget=forms.TextInput(
-        attrs={'class':'form-control','placeholder':'username','id':'hello'}
+        
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={'class':'form-control','placeholder':'Email','id':'ziga'}
     ))
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class':'form-control','placeholder':'username','id':'hi'}
-    ))
+    # user_name = UsernameField(widget=forms.TextInput(
+    #     attrs={'class':'form-control','placeholder':'username','id':'hello'}
+    # ))
+    # password = forms.CharField(widget=forms.PasswordInput(
+    #     attrs={'class':'form-control','placeholder':'Password','id':'hi'}
+    # ))

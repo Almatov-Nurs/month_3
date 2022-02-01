@@ -12,7 +12,7 @@ class Registration(CreateView):
     template_name = 'registration.html'
 
 class NewLoginView(LoginView):
-    form_class = AuthenticationForm
+    form_class = LoginForm
     template_name = 'login.html'
 
     def get_success_url(self):
