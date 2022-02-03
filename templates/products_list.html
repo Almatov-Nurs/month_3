@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <ul>
+        {% for i in object_list %}
+            <li>
+                <h2><a href="/products/{{ i.id }}">{{ i.product_name }}</a></h2>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

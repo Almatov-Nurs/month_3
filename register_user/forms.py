@@ -67,7 +67,7 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         
-    email = forms.EmailField(widget=forms.TextInput(
+    email = forms.EmailField(widget=forms.EmailInput(
         attrs={'class':'form-control','placeholder':'Email','id':'ziga'}
     ))
     username = UsernameField(widget=forms.TextInput(
