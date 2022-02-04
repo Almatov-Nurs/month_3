@@ -31,7 +31,7 @@ class StatusOrderCL(models.Model):
         ("Заказ доставлен","Заказ доставлен")
     )
     customer = models.ForeignKey(CustomerCL, on_delete=models.CASCADE)
-    product = models.ForeignKey(ProductCL, on_delete=models.CASCADE)
+    product = models.ForeignKey(ProductCL, on_delete=models.CASCADE, related_name='product_order')
     status_choice = models.CharField(max_length=100, choices=STATUS_ORDER)
     date_created = models.DateField(auto_now_add=True)
 

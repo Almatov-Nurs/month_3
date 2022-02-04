@@ -8,10 +8,16 @@
     <h2>{{ object.product_name }}</h2>
     <p>{{ object.description }}</p>
     <p>{{ object.price }}</p>
-    <p>{{ object.tag }}</p>
+    {% for i in object.tag.all %}
+        <p>{{ i.tags_name }}</p>
+    {% endfor %}
     <p>{{ object.date_created }}</p>
-    <br>
-    <p>{{  }}</p>
-    <hr>
+    <li>
+        {% for p in object.product_order.all %}
+            <h4>Customer name: {{ p.customer }}</h4>
+            <p>Status Order: {{ p.status_choice }}</p>
+            <time>Date create: {{ p.date_created }}</time>
+        {% endfor %}
+    </li>
 </body>
 </html>

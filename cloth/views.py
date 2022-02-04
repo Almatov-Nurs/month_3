@@ -40,6 +40,7 @@ class ShoesListView(generic.ListView):
 
 class ProductDetailView(generic.DetailView):
     template_name = "product_detail.html"
+    queryset = models.ProductCL.objects.all(), models.StatusOrderCL.objects.all()
 
     def get_object(self, **kwargs):
         product_id = self.kwargs.get("id")
